@@ -108,7 +108,7 @@
           <h2 class="mb-2 h4">Organizations</h2>
           {{ if .Site.Params.github}}
           <a class="avatar-group-item" href="https://github.com/{{ .Site.Params.github }}">
-            <img alt="@github" width="32" height="32" src="{{ "images/github.png" | absURL }}" class="avatar">
+            <img id="github_avatar" alt="@github" width="32" height="32" src="{{ "images/github.png" | absURL }}" class="avatar">
           </a>
           {{ end }}
 
@@ -188,6 +188,13 @@ window.onscroll = function (e) {
     document.querySelector('#headerStuck').classList.add('is-stuck');
   } else {
     document.querySelector('#headerStuck').classList.remove('is-stuck');
+  }
+
+  const currentStyle = currentTheme();
+  if (currentStyle !== 'dark') {
+    document.getElementById('github_avatar').src = 'images/github_white.png';
+  } else {
+    document.getElementById('github_avatar').src = 'images/github.png';
   }
 };
 </script>
